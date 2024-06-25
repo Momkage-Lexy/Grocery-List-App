@@ -1,0 +1,52 @@
+@using HW3Project.Models
+@model IEnumerable<HW3Project.Models.Item>
+
+<!--View to display grocery list after user has submitted form-->
+
+<div class="container listContainer">
+    <div class="row titleRow">
+        <h1 class="header">Grocery List</h1>
+    </div>
+    <div class="row formRow">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 formCol">
+            <form asp-controller="Groceries" asp-action="DeleteItems" method="post" id="listForm">
+                @{
+                    // Group items by category and order the groups for display.
+                    var itemsByCategory = Model.GroupBy(item => item.Category)
+                    .OrderBy(group => group.Key);
+                }
+                @foreach (var categoryGroup in itemsByCategory)
+                {
+                    <h2 class="lKey">@categoryGroup.Key</h2>
+                    <hr>
+                    <ul>
+                        <!-- Iterate over each item in the current category. -->
+                @foreach (var item in categoryGroup.OrderBy(item => item.Name))
+                    {
+                        <li class="lVal"><input type="checkbox" name="selectedItems" value="@item.Id"/>   @item</li>
+                    }
+                    </ul>
+                }
+                <p>@($"Total Item Count: {ViewBag.TotalCount}")</p>    
+                <!-- Use JS to hide/show error -->
+                <div id="deleteError">Please select at least one item to delete.</div>
+                <button type="submit">Delete Item(s)</button>   
+            </form>    
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+    <div class="row titleRow">
+        <div class="col-md-3"></div>
+        <div class="col-md-2">
+            <form asp-controller="Home" asp-action="Index" method="get"><button type="submit" >Add More Items!</button></form>
+        </div>
+        <div class="col-md-2">
+            <form asp-controller="Groceries" asp-action="UpdateQuantitiesView" method="get"><button type="submit">Update Quantities</button></form>
+        </div>
+        <div class="col-md-2">
+            <a href="https://www.doordash.com/home/"><button type="submit" >Something Else<br><br> </button></a>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+@using HW3Project.Models
+@model IEnumerable<HW3Project.Models.Item>
+
+<!-- View to display quantities form -->
+<div class="container">
+    <div class="row title-row">
+        <div class="col-md-3"></div>
+        <div class="col-md-2">    
+            <form asp-controller="Home" asp-action="Index" method="get"><button type="submit">Add More Items!</button></form>
+        </div>
+        <div class="col-md-2">
+            <form asp-controller="Groceries" asp-action="GroceryListView" method="get"><button type="submit">View List</button></form>
+        </div>
+        <div class="col-md-6"></div>
+    </div>
+    <div class="row formRow">
+        <div class="col-md-3"></div>
+        <div class="col-md-6 formCol">
+            <form asp-controller="Groceries" asp-action="UpdateQuantities" method="post" id="listForm">
+                @{ // Group items by category and order the groups for display.
+                    var itemsByCategory = Model.GroupBy(item => item.Category)
+                                            .OrderBy(group => group.Key);
+                }
+
+                @foreach (var categoryGroup in itemsByCategory)
+                {
+                    <h2 class="lKey">@categoryGroup.Key</h2>
+                    <hr>
+
+
+                        <ul>
+                            <!-- Iterate over each item in the current category. -->
+                            @foreach (var item in categoryGroup.OrderBy(item => item.Name))
+                            {
+                                <li class="lVal">
+                                    @item.Name Quantity: <input type="number" id="qListItem" name="quantities[@item.Id]" value="@item.Quantity" min="1" />
+                                </li>
+                            }
+                        </ul>
+                }
+
+                <button type="submit">Update</button>
+            </form> 
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+</div>

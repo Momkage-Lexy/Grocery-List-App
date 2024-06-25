@@ -1,0 +1,109 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+header{
+  background-color: #94A89A;
+}
+
+.navbar{
+  color: #dad2d8;
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+  background-color:#C7AC92;
+  color: #404843;
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+footer {
+  background-color: #94A89A;
+  color: #D4E09B;
+}
+
+ul {
+  list-style-type: none;
+}
+
+#deleteError{
+  color: red; 
+  display: none;
+}
+
+.formCol{
+  text-align: center;
+  border: 2px solid #94A89A;
+  border-radius: 10px;
+  padding: 20px;
+  background-color: #A44A3F;
+  color: #D4E09B;
+}
+
+.titleRow{
+  text-align: center;
+  margin: 10px;
+}
+
+button {
+  margin: 10px;
+  font-size: 16px;
+  font-weight: 200;
+  letter-spacing: 1px;
+  padding: 13px 20px 13px;
+  outline: 0;
+  border: 1px solid black;
+  cursor: pointer;
+  position: relative;
+  background-color: #f8f8f87f;
+}
+
+#abutton{
+  position: relative;
+  margin-left: 180px;
+  margin-top: 10px;
+}
+
+.fVal{
+  margin: 20px;
+  text-align: right;
+  margin-right: 160px;
+}
+
+.field-validation-error {color: rgb(56, 54, 54);}
+.field-validation-valid { display: none;}
+.input-validation-error { border: 1px solid #f00; background-color: #fee; }
+.validation-summary-errors { font-weight: bold; color: rgb(56, 54, 54);}
+.validation-summary-valid { display: none;}
+
+.header{
+  font-family: "Reenie Beanie", cursive;
+  font-weight: 400;
+  font-size: 500%;
+  font-style: normal;
+}
+
+.lKey{
+  text-align: center;
+}
+
+.lVal{
+  text-align: left;
+}
